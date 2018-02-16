@@ -34,25 +34,29 @@ class App extends Component {
   }
   render() {
     const buttonStyles = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: "white",
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
     };
     let persons = null;
-    if (this.state.showPersons) persons = (
-      <div>
-        {this.state.persons.map((person, index) => {
-          return <Person
-            key={person.id}
-            name={person.name}
-            age={person.age}
-            click={() => this.deletePersonHandler(index)}
-            changed={(event) => this.nameChangedHandler(event, person.id)} />
-        })}
-      </div>
-    );
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map((person, index) => {
+            return <Person
+              key={person.id}
+              name={person.name}
+              age={person.age}
+              click={() => this.deletePersonHandler(index)}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
+          })}
+        </div>
+      );
+      buttonStyles.backgroundColor = 'red';
+    }
     return (
       <div className="App">
         <h1>{this.state.headingText}</h1>
