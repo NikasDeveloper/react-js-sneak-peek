@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import Person from './Person/Person';
 import styles from './App.css';
 
@@ -18,13 +17,11 @@ class App extends Component {
     const personIndex = this.state.persons.findIndex(p => p.id === id);
     const persons = [...this.state.persons];
     const person = { ...this.state.persons[personIndex] };
-    // const person = Object.assign({}, this.state.persons[personIndex]);
     person.name = event.target.value;
     persons[personIndex] = person;
     this.setState({ persons: persons });
   }
   deletePersonHandler = (index) => {
-    // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(index, 1);
     this.setState({ persons: persons });
@@ -40,15 +37,12 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return (
-              <ErrorBoundary key={person.id}>
-                <Person
-                  name={person.name}
-                  age={person.age}
-                  click={() => this.deletePersonHandler(index)}
-                  changed={(event) => this.nameChangedHandler(event, person.id)} />
-              </ErrorBoundary>
-            )
+            return <Person
+              key={person.id}
+              name={person.name}
+              age={person.age}
+              click={() => this.deletePersonHandler(index)}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div>
       );
@@ -65,7 +59,6 @@ class App extends Component {
         {persons}
       </div>
     );
-    // return React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'Hi, I\'m react app!!!'));
   }
 }
 
