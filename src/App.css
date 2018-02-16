@@ -4,6 +4,31 @@
   text-align: center;
 }
 
+.App button {
+  padding: 16px;
+  background: green;
+  font: inherit;
+  color: white;
+  border: 1px solid blue;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.App button:hover,
+.App button:focus {
+  background-color: lightgreen;
+  color:black;
+}
+
+.App button.Red{
+  background:red;
+}
+
+.App button.Red:hover,
+.App button.Red:focus{
+  background: salmon;
+}
+
 .red {
   color: red;
 }
