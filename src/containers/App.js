@@ -35,6 +35,7 @@ class App extends PureComponent {
       { id: 4, name: "Eidmantas", age: 21 },
     ],
     showPersons: false,
+    toggleClicked: 0,
   }
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => p.id === id);
@@ -51,7 +52,13 @@ class App extends PureComponent {
   }
   togglePersonsHandler = () => {
     const isShown = this.state.showPersons;
-    this.setState({ showPersons: !isShown });
+    // Use this if you are depended on previous state and other setState can change it aswell.
+    this.setState((prevState, proprs) => {
+      return {
+        showPersons: !isShown,
+        toggleClicked: prevState.toggleClicked + 1
+      }
+    });
   }
   render() {
     console.log("[App.js] Inside render()");
@@ -66,6 +73,7 @@ class App extends PureComponent {
     );
     return (
       <Aux>
+        <p>Toggle button click count: {this.state.toggleClicked}</p>
         <button onClick={() => { this.setState({ showPersons: true }) }}>Show persons</button>
         <Cockpit
           title={this.props.title}
