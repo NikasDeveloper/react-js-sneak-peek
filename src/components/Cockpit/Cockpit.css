@@ -1,4 +1,4 @@
-.Cockpit button {
+.Button {
   padding: 16px;
   background: green;
   font: inherit;
@@ -8,18 +8,18 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.Cockpit button:hover,
-.Cockpit button:focus {
+.Button:hover,
+.Button:focus {
   background-color: lightgreen;
   color:black;
 }
 
-.Cockpit button.Red{
+.Button.Red{
   background:red;
 }
 
-.Cockpit button.Red:hover,
-.Cockpit button.Red:focus{
+.Button.Red:hover,
+.Button.Red:focus{
   background: salmon;
 }
 
